@@ -1,4 +1,4 @@
-const CACHE='autoplus-v2';
+const CACHE='autoplus-v3';
 const FILES=['./','index.html','styles.css','app.js','business.json','manifest.webmanifest','assets/icon.svg','assets/icon-192.png','assets/icon-512.png','assets/service.jpg','assets/shop.jpg','assets/aisle.jpg','assets/parts.jpg','assets/exterior.jpg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
