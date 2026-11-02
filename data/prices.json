@@ -1,0 +1,39 @@
+{
+  "source_url": "https://2gis.ru/gelendzhik/firm/70000001065327447/tab/prices",
+  "source_updated_at": "2026-05-12",
+  "retrieved_at": "2026-11-02",
+  "prices": [
+    {
+      "name": "Тормозные колодки",
+      "from_rub": 700
+    },
+    {
+      "name": "Моторное масло",
+      "from_rub": 300
+    },
+    {
+      "name": "Антифриз",
+      "from_rub": 130
+    },
+    {
+      "name": "Щетки дворников",
+      "from_rub": 150
+    },
+    {
+      "name": "Лампы/Фары",
+      "from_rub": 50
+    },
+    {
+      "name": "Шиномонтаж",
+      "from_rub": 200
+    },
+    {
+      "name": "Шины",
+      "from_rub": 2950
+    },
+    {
+      "name": "Компьютерная диагностика",
+      "from_rub": 1000
+    }
+  ]
+}
