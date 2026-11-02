@@ -1,0 +1,27 @@
+{
+  "orderedGeometries": [
+    {
+      "type": "Feature",
+      "properties": {
+        "color": "#0281f2",
+        "title": "0JDQstGC0L4g0J/Qu9GO0YE=",
+        "description": "PHA+0JPQtdC70LXQvdC00LbQuNC6LCDQnNCw0LvQsNGF0LjRgtC+0LLQsNGPINGD0LvQuNGG0LAsIDQ8L3A+",
+        "zIndex": 1000000000
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.037541,
+          44.603575
+        ]
+      },
+      "id": 540
+    }
+  ],
+  "mapPosition": {
+    "lat": 44.603575,
+    "lon": 38.037541,
+    "zoom": 16
+  },
+  "scrollWheelZoom": false
+}

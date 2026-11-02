@@ -20,7 +20,7 @@ function renderServices(query=''){
  serviceGroups.forEach((group,index)=>{
   const items=group.items.filter(item=>normalize(item).includes(normalized)||normalize(group.title).includes(normalized));if(!items.length)return;count+=items.length;
   const details=document.createElement('details');details.open=!!normalized||index===0;
-  const summary=document.createElement('summary');const number=document.createElement('span');number.className='service-number';number.textContent=String(index+1).padStart(2,'0');const title=document.createElement('span');title.className='service-group-title';title.textContent=group.title;summary.append(number,title);
+  const summary=document.createElement('summary');const title=document.createElement('span');title.className='service-group-title';title.textContent=group.title;summary.append(title);
   const ul=document.createElement('ul');items.forEach(item=>{const li=document.createElement('li');li.textContent=item;ul.append(li)});details.append(summary,ul);list.append(details);
  });
  document.querySelector('#service-count').textContent=normalized?`Найдено услуг: ${count}`:'Все услуги из карточки 2ГИС';
