@@ -15,13 +15,30 @@ function renderProducts(filter='all'){
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>renderProducts(button.dataset.filter)));
 document.querySelectorAll('[data-product]').forEach(link=>link.addEventListener('click',()=>renderProducts(link.dataset.product)));
 const normalize=s=>s.toLocaleLowerCase('ru').replaceAll('ё','е').trim();
+function animateServiceGroup(details,summary){
+ let animation=null;
+ let expanded=details.open;
+ summary.addEventListener('click',event=>{
+  if(!details.animate||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  event.preventDefault();
+  const start=details.getBoundingClientRect().height;
+  expanded=!expanded;
+  if(animation)animation.cancel();
+  details.style.height='';
+  details.open=true;
+  const end=expanded?details.getBoundingClientRect().height:summary.getBoundingClientRect().height+1;
+  details.style.overflow='hidden';
+  animation=details.animate([{height:start+'px'},{height:end+'px'}],{duration:200,easing:'cubic-bezier(.2,.7,.3,1)'});
+  animation.onfinish=()=>{details.open=expanded;details.style.height='';details.style.overflow='';animation=null};
+ });
+}
 function renderServices(query=''){
  const normalized=normalize(query);const list=document.querySelector('#service-list');list.replaceChildren();let count=0;
  serviceGroups.forEach((group,index)=>{
   const items=group.items.filter(item=>normalize(item).includes(normalized)||normalize(group.title).includes(normalized));if(!items.length)return;count+=items.length;
   const details=document.createElement('details');details.open=!!normalized||index===0;
   const summary=document.createElement('summary');const title=document.createElement('span');title.className='service-group-title';title.textContent=group.title;summary.append(title);
-  const ul=document.createElement('ul');items.forEach(item=>{const li=document.createElement('li');li.textContent=item;ul.append(li)});details.append(summary,ul);list.append(details);
+  const ul=document.createElement('ul');items.forEach(item=>{const li=document.createElement('li');li.textContent=item;ul.append(li)});details.append(summary,ul);list.append(details);animateServiceGroup(details,summary);
  });
  document.querySelector('#service-count').textContent=normalized?`Найдено услуг: ${count}`:'Все услуги из карточки 2ГИС';
  if(!count){const empty=document.createElement('div');empty.className='service-empty';const p=document.createElement('p');p.textContent='Услуга не найдена. Попробуйте другое название.';const reset=document.createElement('button');reset.textContent='Сбросить поиск';reset.addEventListener('click',()=>{document.querySelector('#service-search').value='';renderServices();document.querySelector('#service-search').focus()});empty.append(p,reset);list.append(empty)}
